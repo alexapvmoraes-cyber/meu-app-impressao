@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SisBilhar.top - Configuração</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <!-- Google Fonts for premium typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+      --accent-color: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.5);
+      --card-bg: rgba(30, 41, 59, 0.4);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    /* Ambient background glows */
+    .glow-sphere {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(59, 130, 246, 0) 70%);
+      filter: blur(40px);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .glow-1 {
+      top: -100px;
+      left: -100px;
+    }
+
+    .glow-2 {
+      bottom: -100px;
+      right: -100px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, rgba(168, 85, 247, 0) 70%);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 40px 32px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+                  inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    .logo-container {
+      margin-bottom: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+      animation: pulse 3s infinite alternate;
+    }
+
+    .logo-icon {
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    h1 {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      background: linear-gradient(to right, #fff, #cbd5e1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .form-group {
+      text-align: left;
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-prefix {
+      position: absolute;
+      left: 16px;
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+      pointer-events: none;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px 16px 16px 145px; /* Spacing for https://sisbilhar.top/ */
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 4px var(--accent-glow);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      border: none;
+      border-radius: 14px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+      background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .error-msg {
+      color: #ef4444;
+      font-size: 13px;
+      font-weight: 500;
+      margin-top: 8px;
+      display: none;
+      animation: shake 0.4s ease;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+      }
+      100% {
+        box-shadow: 0 8px 32px rgba(139, 92, 246, 0.6);
+      }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-sphere glow-1"></div>
+  <div class="glow-sphere glow-2"></div>
+
+  <div class="container">
+    <div class="card">
+      <div class="logo-container">
+        <span class="logo-icon">8</span>
+      </div>
+      
+      <h1>SisBilhar.top</h1>
+      <p class="subtitle">Insira o código da empresa fornecido pelo administrador para iniciar o aplicativo do operador.</p>
+
+      <form id="configForm" onsubmit="saveConfig(event)">
+        <div class="form-group">
+          <label for="companySlug">Endereço da Empresa</label>
+          <div class="input-wrapper">
+            <span class="input-prefix">sisbilhar.top /</span>
+            <input type="text" id="companySlug" placeholder="empresa" autocomplete="off" required spellcheck="false">
+          </div>
+          <div class="error-msg" id="errorMsg">Por favor, insira um código de empresa válido.</div>
+        </div>
+
+        <button type="submit" class="btn">
+          <span>Configurar Acesso</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
