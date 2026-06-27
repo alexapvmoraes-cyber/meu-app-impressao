@@ -1,0 +1,44 @@
+name: Build iOS App
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Sync Capacitor
+        run: npx cap sync ios
+
+      - name: Build Xcode Project (Unsigned)
+        run: |
+          cd ios/App
+          xcodebuild -workspace App.xcworkspace -scheme App -configuration Debug -sdk iphoneos CODE_SIGNING_ALLOWED=NO -archivePath $PWD/build/App.xcarchive archive
+
+      - name: Package Unsigned IPA
+        run: |
+          mkdir -p ios/App/build/Payload
+          cp -r ios/App/build/App.xcarchive/Products/Applications/App.app ios/App/build/Payload/
+          cd ios/App/build
+          zip -r SisBilhar.ipa Payload
+
+      - name: Upload iOS App Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SisBilhar-iOS-Unsigned
+          path: ios/App/build/SisBilhar.ipa
+          if-no-files-found: error

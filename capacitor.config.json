@@ -1,0 +1,11 @@
+{
+  "appId": "top.sisbilhar.app",
+  "appName": "SisBilhar.top",
+  "webDir": "www",
+  "server": {
+    "allowNavigation": [
+      "sisbilhar.top",
+      "*.sisbilhar.top"
+    ]
+  }
+}

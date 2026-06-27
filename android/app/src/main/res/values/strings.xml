@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SisBilhar.top</string>
+    <string name="title_activity_main">SisBilhar.top</string>
+    <string name="package_name">top.sisbilhar.app</string>
+    <string name="custom_url_scheme">top.sisbilhar.app</string>
+</resources>
