@@ -27,7 +27,7 @@ jobs:
       - name: Build Xcode Project (Unsigned)
         run: |
           cd ios/App
-          xcodebuild -workspace App.xcworkspace -scheme App -configuration Debug -sdk iphoneos CODE_SIGNING_ALLOWED=NO -archivePath $PWD/build/App.xcarchive archive
+          xcodebuild -project App.xcodeproj -scheme App -configuration Debug -sdk iphoneos CODE_SIGNING_ALLOWED=NO -archivePath $PWD/build/App.xcarchive archive
 
       - name: Package Unsigned IPA
         run: |
